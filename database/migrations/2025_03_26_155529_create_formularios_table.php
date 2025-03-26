@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servidores', function (Blueprint $table) {
+        Schema::create('formularios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('resposta');
+            $table->string('marcado_como');
+            $table->foreignId('servidores_id')->constrained('servidores')->onDelete('cascade'); 
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servidores');
+        Schema::dropIfExists('formularios');
     }
 };

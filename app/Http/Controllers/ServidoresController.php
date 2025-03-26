@@ -3,62 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Servidores;
 
 class ServidoresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $servidores = Servidores::all();
+        return view('servidores.index', compact('servidores'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('servidores.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'nivel_id' => 'required|exists:niveis,id',
+            'orgao_id' => 'required|exists:orgaos,id',
+        ]);
+
+        Servidores::create($request->all());
+
+        return redirect()->route('servidores.index')->with('success', 'Servidor cadastrado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $servidor = Servidores::findOrFail($id);
+        return view('servidores.show', compact('servidor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $servidor = Servidores::findOrFail($id);
+        return view('servidores.edit', compact('servidor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'nivel_id' => 'required|exists:niveis,id',
+            'orgao_id' => 'required|exists:orgaos,id',
+        ]);
+
+        $servidor = Servidores::findOrFail($id);
+        $servidor->update($request->all());
+
+        return redirect()->route('servidores.index')->with('success', 'Servidor atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Servidores::findOrFail($id)->delete();
+        return redirect()->route('servidores.index')->with('success', 'Servidor removido com sucesso!');
     }
 }
