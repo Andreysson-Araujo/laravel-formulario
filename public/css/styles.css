@@ -159,8 +159,8 @@ button {
 /* Footer */
 footer {
     text-align: center;
-    background-color: #000e07;
-    color: #fff;
+    background-color: #ffffff;
+    color: #8a8a8a;
     padding: 8px;
     position: fixed; /* Ou use 'relative' se não quiser fixar */
     bottom: 0;
