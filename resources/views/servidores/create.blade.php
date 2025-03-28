@@ -1,18 +1,24 @@
-@extends('layouts.app')
-
+@extends('layouts.main')
+@section('title', 'Coleta de dados')
 @section('content')
-<h1>Adicionar Servidor</h1>
-<form action="{{ route('servidores.store') }}" method="POST">
+<div id="content">
+    <h1>Ola Servidor</h1>
+<form id="content" action="{{ route('servidores.store') }}" method="POST">
     @csrf
-    <label>Nome:</label>
-    <input type="text" name="nome" required>
-    
-    <label>Nível ID:</label>
-    <input type="number" name="nivel_id" required>
-    
-    <label>Órgão ID:</label>
-    <input type="number" name="orgao_id" required>
-
-    <button type="submit">Salvar</button>
+    <div class="mb-3">
+        <label>Qual é seu nome:</label>
+        <input type="text" name="nome" required>
+    </div>
+    <div class="mb-3">
+        <label>Você é um:</label>
+        <input type="number" name="nivel_id" required>
+    </div>
+    <div>
+        <label>Qual orgão você pertence:</label>
+        <input type="number" name="orgao_id" required>
+    </div>
+    <button  type="submit">prosseguir</button>
 </form>
+</div>
+
 @endsection

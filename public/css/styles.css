@@ -1,0 +1,173 @@
+/*genreal*/
+* {
+    font-family: 'Roboto';
+}
+
+div{
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+
+form {
+    margin-top: 40px;
+    width: 400px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Caso esteja usando um arquivo CSS separado */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #049696;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.row {
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.btn-primary {
+    background-color: #F2A340;
+    border:2px solid #C28008;
+}
+
+.btn-primary {
+    background-color: #C28008 ;
+    border-color: #C28008;
+}
+
+#navbar img {
+    width: 90px;
+}
+
+#navbar {
+    justify-content: space-between;
+}
+
+#navbar a {
+    font-size: 14px;
+    color: #757575;
+}
+
+#navbar a:hover {
+    color: #F2A340;
+}
+
+#op{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgb(9, 134, 40);
+    border-radius: 5px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+
+.msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 2px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.msg_e{
+    background-color: #f79a93;
+    color: #6d0000;
+    border: 2px solid #e9613f;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #000e07;
+    color: #fff;
+    padding: 8px;
+    position: fixed; /* Ou use 'relative' se não quiser fixar */
+    bottom: 0;
+    width: 100%; /* Corrige o valor de 'width' */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Adiciona um sombreamento opcional */
+}
+
+footer p {
+    margin-bottom: 0;
+}

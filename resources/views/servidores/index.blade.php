@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
-<h1>Lista de Servidores</h1>
-<a href="{{ route('servidores.create') }}">Adicionar Novo Servidor</a>
-<ul>
-    @foreach ($servidores as $servidor)
-        <li>{{ $servidor->nome }} - <a href="{{ route('servidores.show', $servidor->id) }}">Ver</a></li>
-    @endforeach
-</ul>
+
+<div class="container">
+<h1>Ola Servidor</h1>
+    <a id="op" href="{{ route('servidores.create') }}">Responder questionario</a>
+</div>
+
+
 @endsection
