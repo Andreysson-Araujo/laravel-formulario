@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Nivel;
 
 class NivelController extends Controller
 {
@@ -11,7 +12,8 @@ class NivelController extends Controller
      */
     public function index()
     {
-        //
+        $niveis = Nivel::all();
+        return view('niveis.index', compact('niveis'));
     }
 
     /**
@@ -19,7 +21,7 @@ class NivelController extends Controller
      */
     public function create()
     {
-        //
+        return view('niveis.create');
     }
 
     /**
@@ -27,7 +29,12 @@ class NivelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255'
+        ]);
+
+        Nivel::create($request->all());
+        return redirect()->route('niveis.index')->with('success', 'Nível criado com sucesso!');
     }
 
     /**
@@ -35,7 +42,8 @@ class NivelController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $nivel = Nivel::findOrFail($id);
+        return view('niveis.show', compact('nivel'));
     }
 
     /**
@@ -43,7 +51,8 @@ class NivelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $nivel = Nivel::findOrFail($id);
+        return view('niveis.edit', compact('nivel'));
     }
 
     /**
@@ -51,7 +60,13 @@ class NivelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255'
+        ]);
+
+        $nivel = Nivel::findOrFail($id);
+        $nivel->update($request->all());
+        return redirect()->route('niveis.index')->with('success', 'Nível atualizado com sucesso!');
     }
 
     /**
@@ -59,6 +74,7 @@ class NivelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Nivel::destroy($id);
+        return redirect()->route('niveis.index')->with('success', 'Nível removido com sucesso!');
     }
 }

@@ -9,6 +9,6 @@ class Servidores extends Model
 {
     use HasFactory;
     protected $table = 'servidores';
-    protected $fillable = ['nome', 'orgao_id'];
+    protected $fillable = ['nome', 'nivel_id', 'orgao_id'];
 
 }

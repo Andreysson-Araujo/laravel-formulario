@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Orgao;
 
 class OrgaoController extends Controller
 {
@@ -11,7 +12,8 @@ class OrgaoController extends Controller
      */
     public function index()
     {
-        //
+        $orgaos = Orgao::all();
+        return view('orgaos.index', compact('orgaos'));
     }
 
     /**
@@ -19,7 +21,7 @@ class OrgaoController extends Controller
      */
     public function create()
     {
-        //
+        return view('orgaos.create');
     }
 
     /**
@@ -27,7 +29,13 @@ class OrgaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'nivel' => 'required|string|max:100'
+        ]);
+
+        Orgao::create($request->all());
+        return redirect()->route('orgaos.index')->with('success', 'Órgão criado com sucesso!');
     }
 
     /**
@@ -35,7 +43,8 @@ class OrgaoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orgao = Orgao::findOrFail($id);
+        return view('orgaos.show', compact('orgao'));
     }
 
     /**
@@ -43,7 +52,8 @@ class OrgaoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $orgao = Orgao::findOrFail($id);
+        return view('orgaos.edit', compact('orgao'));
     }
 
     /**
@@ -51,7 +61,14 @@ class OrgaoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'nivel' => 'required|string|max:100'
+        ]);
+
+        $orgao = Orgao::findOrFail($id);
+        $orgao->update($request->all());
+        return redirect()->route('orgaos.index')->with('success', 'Órgão atualizado com sucesso!');
     }
 
     /**
@@ -59,6 +76,7 @@ class OrgaoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Orgao::destroy($id);
+        return redirect()->route('orgaos.index')->with('success', 'Órgão removido com sucesso!');
     }
 }

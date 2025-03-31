@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Servidores;
+use App\Models\Orgao;
+use App\Models\Nivel;
 
 class ServidoresController extends Controller
 {
@@ -11,18 +13,22 @@ class ServidoresController extends Controller
     {
         $servidores = Servidores::all();
         return view('servidores.index', compact('servidores'));
+
     }
 
     public function create()
-    {
-        return view('servidores.create');
+    {   $niveis = Nivel::all(); // Busca todos os níveis do banco
+        $orgaos = Orgao::all(); // Pegando todos os órgãos
+        return view('servidores.create', compact('niveis','orgaos'));
+        
+        
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'nivel_id' => 'required|exists:niveis,id',
+            'nivel_id' => 'required|exists:nivel,id',
             'orgao_id' => 'required|exists:orgaos,id',
         ]);
 
@@ -47,7 +53,7 @@ class ServidoresController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'nivel_id' => 'required|exists:niveis,id',
+            'nivel_id' => 'required|exists:nivel,id',
             'orgao_id' => 'required|exists:orgaos,id',
         ]);
 
