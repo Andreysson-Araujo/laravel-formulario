@@ -34,7 +34,7 @@ class ServidoresController extends Controller
 
         Servidores::create($request->all());
 
-        return redirect()->route('servidores.index')->with('success', 'Servidor cadastrado com sucesso!');
+        return redirect()->route('formularios.create')->with('success', 'Servidor cadastrado com sucesso!');
     }
 
     public function show($id)
