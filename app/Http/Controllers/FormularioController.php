@@ -9,19 +9,24 @@ class FormularioController extends Controller
 {
     public function create(Request $request)
     {
-        return view('formularios.create');
+        $servidor_id = $request->query('servidor_id');
+        return view('formularios.create', compact('servidor_id'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'servidor_id' => 'required|exists:servidores,id',
+            'servidores_id' => 'required|exists:servidores,id',
             'resposta' => 'required|string',
             'marcado_como' => 'required|string'
         ]);
 
-        Formulario::create($request->all());
+        Formulario::create([
+            'servidores_id'=> $request->servidores_id,
+            'resposta'=> $request->resposta,
+            'marcado_como'=> $request->marcado_como
+        ]);
 
-        return redirect()->route('servidores.index')->with('success', 'Resposta enviada com sucesso!');
+        return redirect()->route('servidores.index')->with('msg', 'Resposta enviada com sucesso!');
     }
 }

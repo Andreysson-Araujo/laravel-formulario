@@ -32,9 +32,9 @@ class ServidoresController extends Controller
             'orgao_id' => 'required|exists:orgaos,id',
         ]);
 
-        Servidores::create($request->all());
+        $servidor = Servidores::create($request->all());
 
-        return redirect()->route('formularios.create')->with('success', 'Servidor cadastrado com sucesso!');
+        return redirect()->route('formularios.create', ['servidor_id' =>$servidor->id])->with('msg','Dado do Usuario Coletado com sucesso');
     }
 
     public function show($id)
