@@ -12,9 +12,10 @@
 
     <!-- Pergunta -->
     <div class="mb-3">
-        <label for="resposta">Aqui nessa instituição, o que se pode melhorar?</label>
+        <label for="resposta">Faça aqui seu comentario</label>
         <textarea name="resposta" id="resposta" required class="form-control"></textarea>
     </div>
+    
 
     <!-- Marcar como -->
     <div class="mb-3">

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formularios', function (Blueprint $table) {
+        Schema::create('servidores', function (Blueprint $table) {
             $table->id();
-            $table->string('resposta');
-            $table->string('marcado_como'); 
+            $table->string("nome");
+            $table->foreignId("nivel_id")->constrained('nivel')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formularios');
+        Schema::dropIfExists('servidores');
     }
 };

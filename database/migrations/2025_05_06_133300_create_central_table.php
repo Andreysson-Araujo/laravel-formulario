@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formularios', function (Blueprint $table) {
+        Schema::create('central', function (Blueprint $table) {
             $table->id();
-            $table->string('resposta');
-            $table->string('marcado_como'); 
+            $table->string('nome');
+            $table->date('data_de_inauguracao');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formularios');
+        Schema::dropIfExists('central');
     }
 };
