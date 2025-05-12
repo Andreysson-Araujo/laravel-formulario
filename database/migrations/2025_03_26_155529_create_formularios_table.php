@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('servidores_id'); // Adicionado
             $table->string('resposta');
-            $table->string('marcado_como'); 
+            $table->string('marcado_como');
             $table->timestamps();
+
+            // Se desejar, adicione a constraint de chave estrangeira
+            $table->foreign('servidores_id')->references('id')->on('servidores')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('formularios');
