@@ -25,6 +25,9 @@
                 </ul>
 
                 <p>Deseja prosseguir respondendo nosso Questionario?</p>
+                <div>
+                    <a id="op" href="{{ route('servidores.index') }}">Responder questionario</a>
+                </div>
             </section>
         </main>
 
