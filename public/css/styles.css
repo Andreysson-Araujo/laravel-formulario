@@ -3,62 +3,64 @@
     font-family: 'Roboto';
 }
 
-div{
-    align-items: center;
-}
-
-body {
-    min-height: 100vh;
-    padding-bottom: 100px;
-    position: relative;
-}
-
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-}
-
-.container-fluid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-}
 
 
+/* Estilo geral do container do formulário */
 form {
-    margin-top: 40px;
-    width: 100vh;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
 }
 
-
-input {
-    width: 100vh;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-label {
-    width: 100vh;
-    font-size: 24px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 24px;
+/* Estilo das perguntas */
+label.question {
+    font-weight: 600;
+    font-size: 1.1rem;
     color: #333;
-    margin-bottom: 20px;
+    display: block;
+    margin-bottom: 0.5rem;
 }
+
+/* Inputs do tipo radio */
+.form-check {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+}
+
+/* Campo numérico */
+input[type="number"] {
+    width: 120px;
+}
+
+/* Textarea */
+textarea.class-control {
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+/* Botão */
+button.btn-success {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+    background-color: #218838;
+    margin-bottom: 1.25rem;
+}
+
 
 /* Caso esteja usando um arquivo CSS separado */
 .table {
@@ -94,11 +96,13 @@ h1 {
 }
 
 .btn-primary {
+   
     background-color: #F2A340;
     border:2px solid #C28008;
 }
 
 .btn-primary {
+    
     background-color: #C28008 ;
     border-color: #C28008;
 }

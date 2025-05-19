@@ -9,7 +9,19 @@ class Formulario extends Model
 {
     use HasFactory;
 
-    protected $table = 'formularios';
 
-    protected $fillable = ['resposta', 'marcado_como', 'servidores_id'];
+    protected $fillable =[
+        'servidores_id',
+        'answer_1',
+        'answer_2',
+        'answer_3',
+        'answer_4',    
+        'answer_5',
+        'answer_6',
+    ];
+
+    public function servidor()
+    {
+        return $this->belongsTo(Servidores::class, 'servidores_id');
+    }
 }
