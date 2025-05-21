@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('servidores.store') }}" method="POST">
+<form action="{{ route('servidores.store') }}" class="serv-form" method="POST">
     @csrf
     
     <!-- Campo para o Nome -->

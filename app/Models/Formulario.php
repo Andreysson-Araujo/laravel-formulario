@@ -18,6 +18,8 @@ class Formulario extends Model
         'answer_4',    
         'answer_5',
         'answer_6',
+        'classificate',
+        'comments',
     ];
 
     public function servidor()

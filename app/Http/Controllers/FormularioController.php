@@ -15,27 +15,32 @@ class FormularioController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        // Validação com debug opcional
+        $validated = $request->validate([
             'servidores_id' => 'required|exists:servidores,id',
-            'answer.*' => 'required|string',
-            'classificate' => 'required|integer|min:1|max:10',
-            'comments' => 'nullable|string|max:1000'
+            'answer_1' => 'required|integer',
+            'answer_2' => 'required|integer',
+            'answer_3' => 'required|integer',
+            'answer_4' => 'required|integer',
+            'answer_5' => 'required|integer',
+            'answer_6' => 'required|string',
+            'classificate' => 'required|integer|min:0|max:10',
+            'suggestions' => 'nullable|string|max:1000'
         ]);
-    
+
+        // Inserção no banco
         Formulario::create([
-            'servidores_id' => $request->input('servidores_id'),
-            'answer_1' => $request->input('answer')[0],
-            'answer_2' => $request->input('answer')[1],
-            'answer_3' => $request->input('answer')[2],
-            'answer_4' => $request->input('answer')[3],
-            'answer_5' => $request->input('answer')[4],
-            'answer_6' => $request->input('answer')[5],
-            'classificate' => $request->input('classificate'),
-            'comments' => $request->input('comments')
+            'servidores_id' => $validated['servidores_id'],
+            'answer_1' => $validated['answer_1'],
+            'answer_2' => $validated['answer_2'],
+            'answer_3' => $validated['answer_3'],
+            'answer_4' => $validated['answer_4'],
+            'answer_5' => $validated['answer_5'],
+            'answer_6' => $validated['answer_6'],
+            'classificate' => $validated['classificate'],
+            'comments' => $validated['suggestions']
         ]);
-    
+
         return redirect()->route('servidores.index')->with('msg', 'Resposta enviada com sucesso!');
-    
-    
     }
 }

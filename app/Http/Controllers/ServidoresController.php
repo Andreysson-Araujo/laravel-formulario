@@ -26,13 +26,13 @@ class ServidoresController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'nome' => 'required|string|max:255',
             'nivel_id' => 'required|exists:nivel,id',
             'orgao_id' => 'required|exists:orgaos,id',
         ]);
 
-        $servidor = Servidores::create($request->all());
+        $servidor = Servidores::create($data);
 
         return redirect()->route('formularios.create', ['servidor_id' =>$servidor->id])->with('msg','Dado do Usuario Coletado com sucesso');
     }

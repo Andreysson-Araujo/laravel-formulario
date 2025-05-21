@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('servidores_id');
-            $table->string('answer_1')->nullable();
-            $table->string('answer_2')->nullable();
-            $table->string('answer_3')->nullable();
-            $table->string('answer_4')->nullable();
-            $table->string('answer_5')->nullable();
-            $table->string('answer_6');
+            $table->integer('answer_1')->nullable();
+            $table->integer('answer_2')->nullable();
+            $table->integer('answer_3')->nullable();
+            $table->integer('answer_4')->nullable();
+            $table->integer('answer_5')->nullable();
+            $table->string('answer_6')->nullable();
             $table->integer("classificate");
             $table->longText('comments')->nullable();
             $table->timestamps();

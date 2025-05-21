@@ -18,7 +18,7 @@
 
         <!-- Pergunta 2 -->
         <div class="mb-4">
-            <label class="question">2. Como você avalia o papel do seu lider ?</label>
+            <label class="question">2. Como você avalia o papel do seu líder?</label>
             @include('formularios.radio-options', ['name' => 'answer_2'])
         </div>
 
@@ -30,29 +30,29 @@
 
         <!-- Pergunta 4 -->
         <div class="mb-4">
-            <label class="question">4. Como você avalia o ambiente de trabalho da OCA, considerando a infraestrutura, o acolhimento instituconal, os valores da organização, e as relações interpressoais ?</label>
+            <label class="question">4. Como você avalia o ambiente de trabalho da OCA, considerando a infraestrutura, o acolhimento institucional, os valores da organização e as relações interpessoais?</label>
             @include('formularios.radio-options', ['name' => 'answer_4'])
         </div>
 
         <!-- Pergunta 5 -->
         <div class="mb-4">
-            <label class="question">5. Em relação as ações promovidas para o bem-estar e qualidade de vida no trabalho. Como você se sente ?</label>
+            <label class="question">5. Em relação às ações promovidas para o bem-estar e qualidade de vida no trabalho. Como você se sente?</label>
             @include('formularios.radio-options', ['name' => 'answer_5'])
         </div>
+
+        <!-- Pergunta 6 -->
         <div class="mb-4">
             <label class="question">6. Você faltou alguma das últimas 3 capacitações?</label>
-            
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="faltou_capacitacoes" value="Sim" id="faltouSim" required>
-                <label class="form-check-label" for="faltouSim">Sim</label>
+                <input class="form-check-input" type="radio" name="answer_6" value="Sim" id="answer6Sim" required>
+                <label class="form-check-label" for="answer6Sim">Sim</label>
             </div>
         
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="faltou_capacitacoes" value="Não" id="faltouNao">
-                <label class="form-check-label" for="faltouNao">Não</label>
+                <input class="form-check-input" type="radio" name="answer_6" value="Não" id="answer6Nao">
+                <label class="form-check-label" for="answer6Nao">Não</label>
             </div>
         </div>
-        
 
         <!-- Classificação -->
         <div class="mb-4">
@@ -63,7 +63,7 @@
         <!-- Sugestões -->
         <div class="mb-4">
             <label for="suggestions">Sugestões ou comentários:</label>
-            <textarea name="suggestions" class="class-control" rows="4" maxlength="1000"></textarea>
+            <textarea name="suggestions" class="form-control" rows="4" maxlength="1000"></textarea>
         </div>
 
         <button type="submit" class="btn btn-success">Enviar Respostas</button>
