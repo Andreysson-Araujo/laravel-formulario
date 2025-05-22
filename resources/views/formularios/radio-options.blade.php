@@ -12,7 +12,7 @@
         <label class="form-check-label">Pouco satisfeito</label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="{{ $name }}" value="0" required>
+        <input class="form-check-input" type="radio" name="{{ $name }}" value="1" required>
         <label class="form-check-label">Insatisfeito</label>
     </div>
 </div>
