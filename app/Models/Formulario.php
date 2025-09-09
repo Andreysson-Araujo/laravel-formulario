@@ -10,7 +10,7 @@ class Formulario extends Model
     use HasFactory;
 
 
-    protected $fillable =[
+    protected $fillable = [
         'servidores_id',
         'answer_1',
         'answer_2',
