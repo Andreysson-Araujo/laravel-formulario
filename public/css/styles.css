@@ -23,6 +23,12 @@ label.question {
     margin-bottom: 0.5rem;
 }
 
+nav{
+    background-color: #fdfeff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
 /* Inputs do tipo radio */
 .form-check {
     margin-left: 1rem;
@@ -59,6 +65,27 @@ button.btn-success {
 button.btn-success:hover {
     background-color: #218838;
     margin-bottom: 1.25rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.btn-custom {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+.btn-custom:hover {
+    background-color: #218838;
+    transform: scale(1.05);
 }
 
 
@@ -132,7 +159,10 @@ button.btn-success:hover {
     font-weight: normal;
   }
   
-  
+
+#navbar{
+    color: #007bff;
+}
 
 #navbar img {
     width: 90px;
@@ -197,7 +227,7 @@ button {
 /* Footer */
 footer {
     text-align: center;
-    background-color: #ffffff;
+    background-color: #f3feff;
     color: #8a8a8a;
     padding: 8px;
     position: fixed; /* Ou use 'relative' se não quiser fixar */
