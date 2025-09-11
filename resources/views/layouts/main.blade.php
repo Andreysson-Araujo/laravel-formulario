@@ -44,7 +44,7 @@
       
       </main>
       <footer>
-        <p>Detin &copy; 2025</p>
+        <p>Detin &copy; {{ date('Y') }}</p>
       </footer>
     </body>
 </html>
