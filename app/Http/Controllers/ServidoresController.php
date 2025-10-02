@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Central;
 use Illuminate\Http\Request;
 use App\Models\Servidores;
 use App\Models\Orgao;
@@ -19,7 +20,8 @@ class ServidoresController extends Controller
     public function create()
     {   $niveis = Nivel::all(); // Busca todos os níveis do banco
         $orgaos = Orgao::all(); // Pegando todos os órgãos
-        return view('servidores.create', compact('niveis','orgaos'));
+        $centrais = Central::all();
+        return view('servidores.create', compact('niveis','orgaos', 'centrais'));
         
         
     }
@@ -30,6 +32,7 @@ class ServidoresController extends Controller
             'nome' => 'required|string|max:255',
             'nivel_id' => 'required|exists:nivel,id',
             'orgao_id' => 'required|exists:orgaos,id',
+            'central_id' => 'required|exists:central,id'
         ]);
 
         $servidor = Servidores::create($data);
@@ -40,7 +43,7 @@ class ServidoresController extends Controller
     public function show($id)
     {
         $servidor = Servidores::findOrFail($id);
-        return view('servidores.show', compact('servidor'));
+        return view('servidores.show', compact('servidor', 'centrais'));
     }
 
     public function edit($id)
@@ -55,6 +58,7 @@ class ServidoresController extends Controller
             'nome' => 'required|string|max:255',
             'nivel_id' => 'required|exists:nivel,id',
             'orgao_id' => 'required|exists:orgaos,id',
+            'central_id' => 'required|exists:central,id'
         ]);
 
         $servidor = Servidores::findOrFail($id);

@@ -15,4 +15,8 @@ class Central extends Model
         "nome",
         'data_de_inauguracao',
     ];
+    public function servidores()
+    {
+        return $this->hasMany(Servidores::class);
+    }
 }

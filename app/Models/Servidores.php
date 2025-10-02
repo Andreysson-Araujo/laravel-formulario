@@ -9,6 +9,10 @@ class Servidores extends Model
 {
     use HasFactory;
     protected $table = 'servidores';
-    protected $fillable = ['nome', 'nivel_id', 'orgao_id'];
+    protected $fillable = ['nome', 'nivel_id', 'orgao_id', 'central_id'];
 
+    public function central()
+    {
+        return $this->belongsTo(Central::class);
+    }
 }

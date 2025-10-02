@@ -24,6 +24,15 @@
         </select>
     </div>
     
+    <div class="mb-3">
+        <label for="central_id">Qual central você pertence:</label>
+        <select name="central_id" id="central_id" class="form-control">
+            <option value="" disabled selected>Selecione a Central</option>
+            @foreach($centrais as $central)
+                <option value="{{$central->id}}">{{$central->nome}}</option>
+            @endforeach
+        </select>
+    </div>
 
     <!-- Campo para Órgão (Select) -->
     <div class="mb-3">
