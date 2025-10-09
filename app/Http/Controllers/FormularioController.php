@@ -28,19 +28,25 @@ class FormularioController extends Controller
             'suggestions' => 'nullable|string|max:1000'
         ]);
 
-        // Inserção no banco
-        Formulario::create([
-            'servidores_id' => $validated['servidores_id'],
-            'answer_1' => $validated['answer_1'],
-            'answer_2' => $validated['answer_2'],
-            'answer_3' => $validated['answer_3'],
-            'answer_4' => $validated['answer_4'],
-            'answer_5' => $validated['answer_5'],
-            'answer_6' => $validated['answer_6'],
-            'classificate' => $validated['classificate'],
-            'comments' => $validated['suggestions']
-        ]);
+        try {
+            Formulario::create([
+                'servidores_id' => $validated['servidores_id'],
+                'answer_1' => $validated['answer_1'],
+                'answer_2' => $validated['answer_2'],
+                'answer_3' => $validated['answer_3'],
+                'answer_4' => $validated['answer_4'],
+                'answer_5' => $validated['answer_5'],
+                'answer_6' => $validated['answer_6'],
+                'classificate' => $validated['classificate'],
+                'comments' => $validated['suggestions']
+            ]);
+    
+            return redirect()->route('servidores.index')->with('msg', 'Resposta enviada com sucesso!');
+            
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Erro na validação: ' . $e->getMessage()])->withInput();
+        }
 
-        return redirect()->route('servidores.index')->with('msg', 'Resposta enviada com sucesso!');
+        
     }
 }
