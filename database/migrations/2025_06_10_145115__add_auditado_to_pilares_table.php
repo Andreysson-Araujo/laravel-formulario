@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servidores', function (Blueprint $table) {
-            $table->id();
-            $table->string("nome");
-            $table->foreignId("nivel_id")->constrained('nivel')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('pilares', function (Blueprint $table) {
+            $table->boolean('auditado')->default(false);
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servidores');
+        Schema::table('pilares', function (Blueprint $table) {
+            $table->dropColumn('auditado');
+        });
     }
 };

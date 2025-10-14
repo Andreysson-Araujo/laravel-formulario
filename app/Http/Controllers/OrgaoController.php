@@ -39,7 +39,7 @@ class OrgaoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resources.
      */
     public function show(string $id)
     {

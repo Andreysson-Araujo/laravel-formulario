@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Formulario;
 
-class PilarController extends Controller
+class FormularioController extends Controller
 {
     public function create(Request $request)
     {
@@ -18,12 +18,12 @@ class PilarController extends Controller
         // Validação com debug opcional
         $validated = $request->validate([
             'servidores_id' => 'required|exists:servidores,id',
-            'pilar_1' => 'required|integer',
-            'pilar_2' => 'required|integer',
-            'pilar_3' => 'required|integer',
-            'pilar_4' => 'required|integer',
-            'pilar_5' => 'required|integer',
-            'pilar_6' => 'required|interger',
+            'answer_1' => 'required|integer',
+            'answer_2' => 'required|integer',
+            'answer_3' => 'required|integer',
+            'answer_4' => 'required|integer',
+            'answer_5' => 'required|integer',
+            'answer_6' => 'required|string',
             'classificate' => 'required|integer|min:0|max:10',
             'suggestions' => 'nullable|string|max:1000'
         ]);
@@ -31,12 +31,12 @@ class PilarController extends Controller
         try {
             Formulario::create([
                 'servidores_id' => $validated['servidores_id'],
-                'pilar_1' => $validated['pilar_1'],
-                'pilar_2' => $validated['pilar_2'],
-                'pilar_3' => $validated['pilar_3'],
-                'pilar_4' => $validated['pilar_4'],
-                'pilar_5' => $validated['pilar_5'],
-                'pilar_6' => $validated['pilar_6'],
+                'answer_1' => $validated['answer_1'],
+                'answer_2' => $validated['answer_2'],
+                'answer_3' => $validated['answer_3'],
+                'answer_4' => $validated['answer_4'],
+                'answer_5' => $validated['answer_5'],
+                'answer_6' => $validated['answer_6'],
                 'classificate' => $validated['classificate'],
                 'comments' => $validated['suggestions']
             ]);

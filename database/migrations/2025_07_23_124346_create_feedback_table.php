@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             //Relacionamento com formulario Escolhido
-            $table->foreignId('formulario_id')->constrained('formularios')->onDelete('cascade');
+            $table->foreignId('pilar_id')->constrained('pilares')->onDelete('cascade');
             //Relaciona com o usuario que deu o feecback
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
