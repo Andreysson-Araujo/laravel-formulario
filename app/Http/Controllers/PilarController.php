@@ -17,15 +17,12 @@ class PilarController extends Controller
     {
         // Validação com debug opcional
         $validated = $request->validate([
-            'servidores_id' => 'required|exists:servidores,id',
             'pilar_1' => 'required|integer',
             'pilar_2' => 'required|integer',
             'pilar_3' => 'required|integer',
             'pilar_4' => 'required|integer',
             'pilar_5' => 'required|integer',
             'pilar_6' => 'required|interger',
-            'classificate' => 'required|integer|min:0|max:10',
-            'suggestions' => 'nullable|string|max:1000'
         ]);
 
         try {

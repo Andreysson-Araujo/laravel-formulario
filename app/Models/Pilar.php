@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Formulario extends Model
+class Pilar extends Model
 {
     use HasFactory;
 
 
     protected $fillable = [
-        'servidores_id',
-        'answer_1',
-        'answer_2',
-        'answer_3',
-        'answer_4',    
-        'answer_5',
-        'answer_6',
-        'classificate',
-        'comments',
+        'pilar_1',
+        'pilar_2',
+        'pilar_3',
+        'pilar_4',    
+        'pilar_5',
+        'pilar_6',
+       
     ];
 
     public function servidor()

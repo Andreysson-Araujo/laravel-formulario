@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Pilar;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NivelSeeder::class,
             OrgaoSeeder::class,
+            PilarSeeder::class,
+            PerguntaSeeder::class,      
         ]);
     }
 }
