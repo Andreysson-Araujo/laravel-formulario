@@ -37,7 +37,7 @@ class ServidoresController extends Controller
 
         $servidor = Servidores::create($data);
 
-        return redirect()->route('formularios.create', ['servidor_id' =>$servidor->id])->with('msg','Dado do Usuario Coletado com sucesso');
+        return redirect()->route('formulario.create', ['servidor_id' =>$servidor->id])->with('msg','Dado do Usuario Coletado com sucesso');
     }
 
     public function show($id)

@@ -3,70 +3,56 @@
 @section('title', 'Responder Questionário')
 
 @section('content')
-<div class="container-fluid d-flex justify-content-center align-items-center">
-    <form action="{{ route('formularios.store') }}" method="POST" class="w-75">
+<div class="container-fluid d-flex justify-content-center align-items-center py-5">
+    <form action="{{ route('formulario.store') }}" method="POST" class="w-75">
         @csrf
 
-        <!-- Campo Oculto com ID do Servidor -->
-        <input type="hidden" name="servidores_id" value="{{ request('servidor_id') }}">
+        <input type="hidden" name="servidores_id" value="{{ $servidor_id }}">
 
-        <!-- Pergunta 1 -->
-        <div class="mb-4">
-            <label class="question">1. Quanto às capacitações fornecidas pela OCA e sua aplicação na rotina de trabalho. Como você se sente?</label>
-            @include('formularios.radio-options', ['name' => 'answer_1'])
-        </div>
+        {{-- LOOP DINÂMICO DE PERGUNTAS DO BANCO --}}
+        @foreach($perguntas as $index => $pergunta)
+            @php 
+                // Cria o nome 'answer_1', 'answer_2', etc. com base na posição
+                $nomeCampo = 'answer_' . ($index + 1); 
+            @endphp
 
-        <!-- Pergunta 2 -->
-        <div class="mb-4">
-            <label class="question">2. Como você avalia o papel do seu líder?</label>
-            @include('formularios.radio-options', ['name' => 'answer_2'])
-        </div>
+            <div class="mb-4 p-3 border rounded bg-light shadow-sm">
+                <label class="question d-block mb-3 font-weight-bold">
+                    {{ $index + 1 }}. {{ $pergunta->texto_pergunta }}
+                </label>
 
-        <!-- Pergunta 3 -->
-        <div class="mb-4">
-            <label class="question">3. Como você avalia a qualidade da comunicação com sua equipe e liderança no dia de trabalho?</label>
-            @include('formularios.radio-options', ['name' => 'answer_3'])
-        </div>
-
-        <!-- Pergunta 4 -->
-        <div class="mb-4">
-            <label class="question">4. Como você avalia o ambiente de trabalho da OCA, considerando a infraestrutura, o acolhimento institucional, os valores da organização e as relações interpessoais?</label>
-            @include('formularios.radio-options', ['name' => 'answer_4'])
-        </div>
-
-        <!-- Pergunta 5 -->
-        <div class="mb-4">
-            <label class="question">5. Em relação às ações promovidas para o bem-estar e qualidade de vida no trabalho. Como você se sente?</label>
-            @include('formularios.radio-options', ['name' => 'answer_5'])
-        </div>
-
-        <!-- Pergunta 6 -->
-        <div class="mb-4">
-            <label class="question">6. Você faltou alguma das últimas 3 capacitações?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="answer_6" value="Sim" id="answer6Sim" required>
-                <label class="form-check-label" for="answer6Sim">Sim</label>
+                {{-- Verifica se é a pergunta 6 (que você fez com Sim/Não no exemplo) --}}
+                @if($index + 1 == 6)
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Sim" id="{{ $nomeCampo }}Sim" required>
+                        <label class="form-check-label" for="{{ $nomeCampo }}Sim">Sim</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Não" id="{{ $nomeCampo }}Nao">
+                        <label class="form-check-label" for="{{ $nomeCampo }}Nao">Não</label>
+                    </div>
+                @else
+                    {{-- Usa o componente de rádio padrão para as outras perguntas --}}
+                    @include('formularios.radio-options', ['name' => $nomeCampo])
+                @endif
             </div>
-        
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="answer_6" value="Não" id="answer6Nao">
-                <label class="form-check-label" for="answer6Nao">Não</label>
-            </div>
-        </div>
+        @endforeach
 
-        <!-- Classificação -->
+        <hr class="my-5">
+
         <div class="mb-4">
-            <label for="classificate">Dê uma nota geral para sua satisfação (0 a 10):</label>
+            <label for="classificate" class="font-weight-bold">Dê uma nota geral para sua satisfação (0 a 10):</label>
             <input type="number" class="form-control" name="classificate" min="0" max="10" required>
         </div>
 
-        <!-- Sugestões -->
         <div class="mb-4">
-            <label for="suggestions">Sugestões ou comentários:</label>
-            <textarea name="suggestions" class="form-control" rows="4" maxlength="1000"></textarea>
+            <label for="suggestions" class="font-weight-bold">Sugestões ou comentários:</label>
+            <textarea name="suggestions" class="form-control" rows="4" maxlength="1000" placeholder="Sua opinião é muito importante para nós..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-success">Enviar Respostas</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg px-5">Enviar Respostas</button>
+        </div>
     </form>
 </div>
 @endsection

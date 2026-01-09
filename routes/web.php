@@ -11,7 +11,7 @@ use App\Http\Controllers\PerguntaController;
 
 Route::resource('orgaos', OrgaoController::class);
 Route::resource('niveis', NivelController::class);
-Route::resource('formularios', FormularioController::class);
+Route::resource('formulario', FormularioController::class);
 Route::resource('central', CentralController::class);
 Route::resource('perguntas', PerguntaController::class);
 Route::get('/', function () {
