@@ -19,4 +19,9 @@ class Pergunta extends Model
     {
         return $this->belongsTo(Pilar::class, 'pilar_id');
     }
+
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class);
+    }
 }
