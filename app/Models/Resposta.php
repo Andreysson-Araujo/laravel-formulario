@@ -14,9 +14,11 @@ class Resposta extends Model
 
     // Campos que podem ser preenchidos em massa (Mass Assignment)
     protected $fillable = [
-        'formulario_id', 
+        'servidor_id', 
         'pergunta_id', 
-        'valor'
+        'valor', 
+        'classificacao_geral', 
+        'comentarios'
     ];
 
     /**

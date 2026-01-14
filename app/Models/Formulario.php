@@ -26,4 +26,9 @@ class Formulario extends Model
     {
         return $this->belongsTo(Servidores::class, 'servidores_id');
     }
+
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class, 'formulario_id');
+    }
 }

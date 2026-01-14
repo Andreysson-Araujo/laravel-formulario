@@ -10,9 +10,12 @@ class Pergunta extends Model
     use HasFactory;
 
     protected $table = 'perguntas';
-    protected $fillable =[
-        'pilar_id',
-        'texto_pergunta',
+    protected $fillable = [
+        'servidor_id', 
+        'pergunta_id', 
+        'valor', 
+        'classificacao_geral', 
+        'comentarios'
     ];
 
     public function pilar()
@@ -22,6 +25,6 @@ class Pergunta extends Model
 
     public function respostas()
     {
-        return $this->hasMany(Resposta::class);
+        return $this->hasMany(Resposta::class, 'pergunta_id');
     }
 }

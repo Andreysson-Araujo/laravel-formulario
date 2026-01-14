@@ -3,48 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Formulario;
+use App\Models\Resposta; // Importamos a Model Resposta, que é a que existe no banco
+use App\Models\Pergunta;
 
 class FormularioController extends Controller
 {
     public function create(Request $request)
     {
         $servidor_id = $request->query('servidor_id');
-        // Busca todas as perguntas cadastradas
-        $perguntas = \App\Models\Pergunta::all();
+        $perguntas = Pergunta::all();
 
         return view('formularios.create', compact('servidor_id', 'perguntas'));
     }
 
     public function store(Request $request)
     {
-        // 1. Validamos os campos gerais e o array de respostas
         $request->validate([
-            'servidores_id' => 'required|exists:servidores,id',
-            'answers' => 'required|array', // Recebe o array de respostas da View
-            'classificate' => 'required|integer|min:0|max:10',
-            'suggestions' => 'nullable|string|max:1000'
+            'servidores_id' => 'required',
+            'answers' => 'required|array',
+            'classificate' => 'required',
         ]);
 
         try {
-            $data = [
-                'servidores_id' => $request->servidores_id,
-                'classificate'  => $request->classificate,
-                'comments'      => $request->suggestions,
-            ];
-
-            // 2. Mapeamos as respostas do banco para as suas colunas fixas
-            // Isso assume que o usuário respondeu na ordem
-            foreach ($request->answers as $index => $valor) {
-                $coluna = 'answer_' . ($index); // Cria o nome 'answer_1', 'answer_2'...
-                $data[$coluna] = $valor;
+            // No seu diagrama, não existe tabela 'formularios'. 
+            // Vamos salvar tudo na tabela 'respostas' em um loop.
+            foreach ($request->answers as $pergunta_id => $valor_resposta) {
+                Resposta::create([
+                    'servidor_id'       => $request->servidores_id,
+                    'pergunta_id'         => $pergunta_id,
+                    'valor'               => $valor_resposta,
+                    'classificacao_geral' => $request->classificate, // Nome da coluna no seu diagrama
+                    'comentarios'         => $request->suggestions,   // Nome da coluna no seu diagrama
+                ]);
             }
 
-            Formulario::create($data);
+            return redirect()->route('servidores.index')->with('msg', 'Sucesso!');
 
-            return redirect()->route('servidores.index')->with('msg', 'Resposta enviada!');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Erro: ' . $e->getMessage()])->withInput();
+            // Se der erro de nome de coluna, o DD vai te avisar exatamente qual é
+            dd("Erro ao salvar: " . $e->getMessage());
         }
     }
 }

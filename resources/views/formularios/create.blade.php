@@ -12,8 +12,8 @@
         {{-- LOOP DINÂMICO DE PERGUNTAS DO BANCO --}}
         @foreach($perguntas as $index => $pergunta)
             @php 
-                // Cria o nome 'answer_1', 'answer_2', etc. com base na posição
-                $nomeCampo = 'answer_' . ($index + 1); 
+                // MUITO IMPORTANTE: O nome deve carregar o ID da pergunta para o Controller saber quem é quem
+                $nomeCampo = "answers[" . $pergunta->id . "]"; 
             @endphp
 
             <div class="mb-4 p-3 border rounded bg-light shadow-sm">
@@ -21,18 +21,18 @@
                     {{ $index + 1 }}. {{ $pergunta->texto_pergunta }}
                 </label>
 
-                {{-- Verifica se é a pergunta 6 (que você fez com Sim/Não no exemplo) --}}
+                {{-- Se for a pergunta 6 ou qualquer uma que peça Sim/Não --}}
                 @if($index + 1 == 6)
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Sim" id="{{ $nomeCampo }}Sim" required>
-                        <label class="form-check-label" for="{{ $nomeCampo }}Sim">Sim</label>
+                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Sim" id="resp{{ $pergunta->id }}Sim" required>
+                        <label class="form-check-label" for="resp{{ $pergunta->id }}Sim">Sim</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Não" id="{{ $nomeCampo }}Nao">
-                        <label class="form-check-label" for="{{ $nomeCampo }}Nao">Não</label>
+                        <input class="form-check-input" type="radio" name="{{ $nomeCampo }}" value="Não" id="resp{{ $pergunta->id }}Nao">
+                        <label class="form-check-label" for="resp{{ $pergunta->id }}Nao">Não</label>
                     </div>
                 @else
-                    {{-- Usa o componente de rádio padrão para as outras perguntas --}}
+                    {{-- O componente radio-options deve usar o $nomeCampo com o array answers --}}
                     @include('formularios.radio-options', ['name' => $nomeCampo])
                 @endif
             </div>
